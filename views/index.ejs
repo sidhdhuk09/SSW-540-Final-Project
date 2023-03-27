@@ -1,0 +1,83 @@
+<!-- Header section -->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Faculty Information Page</h1>
+    <div class="btn-toolbar mb-2 mb-md-0"></div>
+    <div class="btn-group me-2">
+      <a href="/add" class="btn btn-sm btn-outline-secondary">+ Add New Faculty Member</a>
+    </div>
+  </div>
+  
+  <!-- Table section -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+  
+      <!-- Table header section -->
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Contact No</th>
+          <th scope="col">Email</th>
+          <th scope="col">Title</th>
+          <th scope="col">Location</th>
+          <th scope="col">Department</th>
+          <th scope="col">Office Hours</th>
+          <!-- <th scope="col">Link</th> -->
+          <th scope="col" class="text-end">Action</th>
+        </tr>
+      </thead>
+  
+      <!-- Table body section -->
+      <tbody>
+        <% faculty.forEach(element => { %>
+  
+          <!-- Table row section -->
+          <tr class="align-items-center">
+  
+            <!-- Column: Name -->
+            <td><%= element.Name %></td>
+  
+            <!-- Column: Contact No -->
+            <td><%= element.contactno %></td>
+  
+            <!-- Column: Email -->
+            <td><%= element.email %></td>
+  
+            <!-- Column: Title -->
+            <td><%= element.title %></td>
+  
+            <!-- Column: Location -->
+            <td><%= element.loc %></td>
+  
+            <!-- Column: Department -->
+            <td><%= element.dept %></td>
+  
+            <!-- Column: Office Hours -->
+            <td><%= element.officehours %></td>
+
+            <td class="d-none"><%= element.link %></td>
+  
+            <!-- Column: Action -->
+            <td>
+                <div class="d-flex flex-row justify-content-end gap-2">
+                  <a href="/view/<%= element._id %>" class="text-primary me-2">
+                    View Information
+                  </a>
+                  <a href="/edit/<%= element._id %>" class="text-warning me-2">
+                    Edit Information
+                  </a>
+                  <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                    <a href="#" onclick="if(confirm('are you sure you want to delete this record?')){this.parentNode.submit()}" class="text-danger">
+                      Delete Record
+                    </a>
+                  </form>
+                </div>
+              </td>
+              
+  
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+  
+
+ 
