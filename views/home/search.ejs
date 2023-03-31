@@ -1,0 +1,43 @@
+<div class="table-responsive">
+    <% if (faculty && faculty.length) { %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+            <th scope="col">Department</th>
+            <th scope="col">Office Hours</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% faculty.forEach(element => { %>
+            <tr>
+              <td><%= element.Name %></td>
+              <td><%= element.contactno %></td>
+              <td><%= element.email %></td>
+              <td><%= element.title %></td>
+              <td><%= element.loc %></td>
+              <td><%= element.dept %></td>
+              <td><%= element.officehours %></td>
+              <td>
+                <div class="d-flex flex-row justify-content-end gap-2">
+                  <a href="/home/viewhome/<%= element._id %>" class="text-primary me-2">
+                    View 
+                  </a>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <div class="alert alert-warning" role="alert">
+        No results found.
+      </div>
+    <% } %>
+  </div>
+  

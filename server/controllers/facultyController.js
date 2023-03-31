@@ -21,7 +21,7 @@ exports.homepage=async(req,res) => {
         try {
             const faculty = await facultys.aggregate([{$sort: {updatedAT:-1}}]).skip((on_a_single_page*seePage)-on_a_single_page).limit(on_a_single_page);
             const count = await facultys.countDocuments();
-            res.render('index', {
+            res.render('admin/index', {
                 locals,
                 faculty, 
                 current: seePage,
@@ -47,7 +47,7 @@ exports.homepage=async(req,res) => {
             description: 'Faculty management system',
         }
 
-        res.render('facultymembers/add',locals)
+        res.render('admin/add',locals)
     
     };
 
@@ -77,12 +77,12 @@ exports.homepage=async(req,res) => {
         try {
             await newFaculty.save();
             // If you want to redirect the user to a new URL:
-            res.redirect('/');
+            res.redirect('/admin');
         } catch (error) {
             console.log(error);
             // If there was an error, render the add page again with an error message:
             locals.error = 'There was an error adding the faculty member.';
-            res.render('facultymembers/add', locals);
+            res.render('admin/add', locals);
         }
     };
 
@@ -98,11 +98,11 @@ exports.homepage=async(req,res) => {
       
         try {
           const faculty = await facultys.findById(req.params.id);
-          res.render('facultymembers/view', { locals, faculty });
+          res.render('admin/view', { locals, faculty });
         } catch (error) {
           console.log(error);
           locals.error = 'There was an error loading the faculty member.';
-          res.render('facultymembers/view', { locals });
+          res.render('admin/view', { locals });
         }
       };
       
@@ -117,7 +117,7 @@ exports.editfaculty = async (req, res) => {
             description: 'Faculty Management System',
             faculty: facultys // pass the faculty data to the view
         };
-        res.render('facultymembers/edit', {
+        res.render('admin/edit', {
             locals,
             faculty
 
@@ -126,7 +126,7 @@ exports.editfaculty = async (req, res) => {
     } catch (error) {
         console.log(error);
         locals.error = 'There was an error loading the faculty member.';
-        res.render('facultymembers/edit', { locals });
+        res.render('admin/edit', { locals });
     }
 };
 
@@ -146,7 +146,7 @@ exports.editFacultyRecord = async (req, res) => {
         updatedAT: Date.now()
       }, { new: true }); // pass the option { new: true } to return the updated document instead of the original document
 
-      await res.redirect(`/view/${req.params.id}`);
+      await res.redirect(`/admin/view/${req.params.id}`);
       console.log('redirected');
     } catch (error) {
       console.log(error);
@@ -157,11 +157,46 @@ exports.editFacultyRecord = async (req, res) => {
 exports.deleteFaculty = async (req, res) => {
     try {
         await faculty.deleteOne({_id: req.params.id})
-        res.redirect('/');
+        res.redirect('/admin');
     } catch (error) {
       console.log(error);
     }
 };
+
+
+//search faculty
+exports.searchFaculty = async (req, res) => {
+    const locals = {
+      title: 'Search Faculty',
+      description: 'Faculty Management System',
+    };
+    try {
+      if (!req.body.query || req.body.query.trim() === ' ') {
+        locals.error = ' enter a valid query.';
+        res.render('home/search', {
+             locals 
+            });
+        return;
+      }
+  
+      const query = req.body.query;
+      const nospecialchars = query.replace(/\W/g, '');
+      console.log(nospecialchars);
+  
+      const faculty = await facultys.find({
+        $or: [
+          { Name: { $regex: new RegExp('.*' + nospecialchars + '.*', 'i') } },
+          { loc: { $regex: new RegExp('.*' + nospecialchars + '.*', 'i') } },
+        ]
+      });
+      res.render('home/search', { locals, faculty });
+    } catch (error) {
+      console.log(error);
+      locals.error = 'There was an error loading the faculty member.';
+      res.render('home/search', { locals });
+    }
+  };
+  
 
 
     // exports.homepage=async(req,res) => {

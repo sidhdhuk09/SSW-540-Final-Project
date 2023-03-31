@@ -1,0 +1,117 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-fluid">
+    <div class="row">
+
+
+
+
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+    <h1 class="h2"><%= faculty.Name %></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="<%= faculty.link %>" target="_blank" class="btn btn-sm btn-outline-secondary">Website</a>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Map</button>
+            
+            
+        </div>
+    </div>
+</div>
+
+  
+  <div class="col py-3">
+  
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Faculty Information Page</a></li>
+            <li class="breadcrumb-item active"><%= faculty.Name %></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col text-end fw-lighter">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Last Updated <%= new Date(faculty.updatedAt).toUTCString() %></p>
+                <p class="card-text">User ID: <%= faculty._id %></p>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  
+  <ul class="list-group">
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>Name:</b></div>
+        <div class="col"><%= faculty.Name %></div>
+      </div>
+    </li>
+  
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Contact No:</b></div>
+        <div class="col"><%= faculty.contactno %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Email:</b></div>
+        <div class="col"><%= faculty.email %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Title:</b></div>
+        <div class="col"><%= faculty.title %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Location:</b></div>
+        <div class="col"><%= faculty.loc %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Department:</b></div>
+        <div class="col"><%= faculty.dept %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"><b>Office Hours:</b></div>
+        <div class="col"><%= faculty.officehours %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+        <div class="row">
+          <div class="col" style="max-width: 140px"><b>Date Created:</b></div>
+          <div class="col"><%= new Date(faculty.createdAt).toUTCString() %></div>
+          </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col" style="max-width: 140px"><b>Last Updated:</b></div>
+          <div class="col"><%= new Date(faculty.updatedAt).toUTCString() %></div>
+        </div>
+      </li>
+      </ul>
+      </div>
+       
+    </main>
+  </div>
+  </div>
+   
