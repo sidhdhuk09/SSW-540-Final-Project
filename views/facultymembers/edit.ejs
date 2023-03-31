@@ -29,7 +29,7 @@
     </div>
   </div>
   
-  <form action="/edit/<%= faculty.id.toString() %>?_method=PUT" method="POST">
+  <form action="/admin/edit/<%= faculty.id.toString() %>?_method=PUT" method="POST">
 
   
     <div class="row form-group mb-4">
@@ -102,7 +102,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form action="/edit/<%= faculty._id %>?_method=DELETE" method="POST" class="position-relative">
+        <form action="/admin/edit/<%= faculty._id %>?_method=DELETE" method="POST" class="position-relative">
           <button type="submit" class="btn btn-primary">Yes, Remove faculty</button>
         </form>
       </div>

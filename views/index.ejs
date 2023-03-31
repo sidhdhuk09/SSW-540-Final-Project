@@ -65,7 +65,7 @@
                   <a href="/edit/<%= element._id %>" class="text-warning me-2">
                     Edit Information
                   </a>
-                  <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                  <form action="/admin/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                     <a href="#" onclick="if(confirm('are you sure you want to delete this record?')){this.parentNode.submit()}" class="text-danger">
                       Delete Record
                     </a>
