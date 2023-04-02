@@ -66,6 +66,8 @@
     </div>
   </body>
 </html> -->
+
+<!-- Path: views\home\partials\header.ejs -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -122,17 +124,45 @@
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
+        text-decoration: none;
+      }
+      .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+      }
+      .breadcrumb li {
+        display: inline-block;
+        margin-right: 5px;
+      }
+      .breadcrumb li a {
+        color: #333;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .breadcrumb li.active {
+        color: #999;
+      }
+      .breadcrumb li.active a {
+        color: #999;
+        pointer-events: none;
+      }
+      .breadcrumb li a:hover {
+        background-color: #007bff;
+        color: #fff;
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <a href="/admin" class="admin-button">Admin</a>
       <form class="search-form" method="POST" action="home/search">
-        <input class="search-input" type="text" name="query" placeholder="Search for stevens professors">
+        <input class="search-input" type="text" name="query" placeholder="Search for Stevens professors">
         <button class="search-button" type="submit">Search</button>
       </form>
-      <button class="admin-button" type="button">Admin</button>
-      
     </div>
   </body>
 </html>
+
