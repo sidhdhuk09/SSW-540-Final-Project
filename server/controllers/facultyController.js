@@ -1,4 +1,5 @@
 const faculty = require('../models/facultys');
+
 const mongoose=require('mongoose');
 
 

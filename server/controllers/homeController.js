@@ -35,20 +35,20 @@ exports.homepage=async(req,res) => {
         }
     };
 
-
     exports.searchFaculty = async (req, res) => {
         const locals = {
           title: 'Search Faculty',
           description: 'Faculty Management System',
         };
         try {
-          if (!req.body.query || req.body.query.trim() === '') {
-            locals.error = 'Please enter a valid search query.';
-            res.render('home/search', { locals });
+          const query = req.body.query;
+      
+          if (!query || query.length < 2 || query.trim() === '') {
+            locals.error = 'Please enter at least 2 character.';
+            res.render('home/search', { ...locals, faculty: [] });
             return;
           }
       
-          const query = req.body.query;
           const nospecialchars = query.replace(/\W/g, '');
           console.log(nospecialchars);
       
@@ -56,16 +56,25 @@ exports.homepage=async(req,res) => {
             $or: [
               { Name: { $regex: new RegExp('.*' + nospecialchars + '.*', 'i') } },
               { loc: { $regex: new RegExp('.*' + nospecialchars + '.*', 'i') } },
-            ]
+            ],
           });
-          res.render('home/search', { locals, faculty });
+      
+          if (faculty.length > 0) {
+            res.render('home/search', { ...locals, faculty });
+          } else {
+            locals.error = 'No results found. Please try again.';
+            res.render('home/search', { ...locals, faculty: [] });
+          }
         } catch (error) {
           console.log(error);
           locals.error = 'There was an error loading the faculty member.';
-          res.render('home/search', { locals });
+          console.log(locals.error);
+          res.render('home/search', { ...locals, faculty: [] });
         }
       };
       
+      
+  
 
     exports.viewfacultyhome=async(req,res) => {
         const locals = {

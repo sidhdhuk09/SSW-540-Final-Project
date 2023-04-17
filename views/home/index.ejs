@@ -1,19 +1,26 @@
-
-
 <%- include('partials/header.ejs') %>
 
-<div class="container-fluid">
-    <div class="row">
-
-
-
-
-
-
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-   
-
-</main>
+<div class="container">
+    <a href="/admin/login" class="admin-button">
+        Admin
+    </a>
+    <form class="search-form" id="searchForm" method="POST" action="/home/search">
+        <input class="search-input" type="text" name="query" placeholder="Search for Stevens professors">
+        <button class="search-button" type="submit">
+            Search
+        </button> 
+    </form>
 </div>
-</div>
+
+<script>
+  const searchForm = document.getElementById('searchForm');
+
+  searchForm.addEventListener('submit', function (event) {
+    const searchInput = event.target.querySelector('input[name="query"]');
+    
+    if (!searchInput || searchInput.value.length < 2) {
+      event.preventDefault();
+      alert('Please enter at least 2 characters.');
+    }
+  });
+</script>

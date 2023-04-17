@@ -16,6 +16,7 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set('layout','./layouts/main');
 app.set('view engine','ejs');
+const admins=require('./server/routes/admins');
     
 
 
@@ -45,7 +46,7 @@ app.use(
 
 //routes
 app.use('/',require('./server/routes/faculty'));
-
+app.use('/admin',require('./server/routes/admins'));
 
 app.get('*', (req, res) => {
     res.status(404).render('error');
