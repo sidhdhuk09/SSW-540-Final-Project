@@ -135,7 +135,8 @@ exports.editfaculty = async (req, res) => {
 //edit faculty after update
 exports.editFacultyRecord = async (req, res) => {
     try {
-      await faculty.findByIdAndUpdate(req.params.id,{
+      console.log(req.body.contactno);
+      await facultys.findByIdAndUpdate(req.params.id,{
         Name: req.body.Name,
         email: req.body.email,
         contactno: req.body.contactno,
