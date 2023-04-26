@@ -7,9 +7,18 @@ const express=require('express');
 const facultys = require('../models/facultys');
 const router=express.Router();
 
+function isAdmin(req, res) {
+  // if (req?.session && req.session.admin && req.session.admin.Role === 'admin') {
+    if(req.session.admin === undefined){
+    res.redirect('/admin/login');
+    console.log(req.session)
+
+  }
+}
 
 exports.homepage=async(req,res) => {
-  
+        isAdmin(req, res);
+
         const locals=   {
             title: 'Faculty stevens',
             description: 'Faculty management system',
@@ -42,7 +51,8 @@ exports.homepage=async(req,res) => {
     // res.render('faculty/index');
 
     exports.addFaculty=async(req,res) => {
-  
+      isAdmin(req, res);
+
         const locals=   {
             title: 'new fauculty member',
             description: 'Faculty management system',
@@ -55,6 +65,9 @@ exports.homepage=async(req,res) => {
     //push data
 
     exports.postFaculty=async(req,res) => {
+
+      isAdmin(req, res);
+      
         console.log(req.body);
     
         const newFaculty=new faculty({
@@ -92,6 +105,9 @@ exports.homepage=async(req,res) => {
     //view faculty
 
     exports.viewfaculty = async (req, res) => {
+
+      isAdmin(req, res);
+
         const locals = {
           title: 'view stevens faculty data',
           description: 'Faculty management system',
@@ -111,6 +127,9 @@ exports.homepage=async(req,res) => {
 //edit faculty
 
 exports.editfaculty = async (req, res) => {
+
+  isAdmin(req, res);
+
     try {
         const faculty = await facultys.findById(req.params.id);
         const locals = {
@@ -134,6 +153,9 @@ exports.editfaculty = async (req, res) => {
 
 //edit faculty after update
 exports.editFacultyRecord = async (req, res) => {
+
+  isAdmin(req, res);
+
     try {
       console.log(req.body.contactno);
       await facultys.findByIdAndUpdate(req.params.id,{
@@ -157,6 +179,9 @@ exports.editFacultyRecord = async (req, res) => {
 
 
 exports.deleteFaculty = async (req, res) => {
+
+  isAdmin(req, res);
+
     try {
         await faculty.deleteOne({_id: req.params.id})
         res.redirect('/admin');
@@ -168,6 +193,9 @@ exports.deleteFaculty = async (req, res) => {
 
 //search faculty
 exports.searchFaculty = async (req, res) => {
+
+  isAdmin(req, res);
+
     const locals = {
       title: 'Search Faculty',
       description: 'Faculty Management System',

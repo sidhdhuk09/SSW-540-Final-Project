@@ -2,8 +2,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
-
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
                 <div class="card" style="width: 30rem;">
@@ -22,10 +20,12 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </form>
+                        <% if (error) { %>
+                            <div class="alert alert-danger"><%= error %></div>
+                        <% } %>
                     </div>
                 </div>
             </div>
         </main>
     </div>
 </div>
-
