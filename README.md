@@ -1,6 +1,7 @@
-# Final-project-test
+# SSW-540 Final Project- Stevens Faculty Management System.
 
-This is the final project submission for SSW-540. The repo contains the system built to maintain stevens faculty management system for the school of systems and enterprises. The project includes 2 views. One, the user view. The user will be able to search for their respective faculty's information, location and other details. The second is the admin view with a login system. The admin can add, update or delete records as he sees fit. I'll be adding more features to the project and is a work in progress.
+This is the final project submission for SSW-540. The repo contains the system built to maintain stevens faculty management system for the school of systems and enterprises. The project includes 2 views. One, the user view. The user will be able to search for their respective faculty's information, location and other details. The search bar requires a minimum of two characters. Invalid characters or other special characters not associated to the person you want to search will yield invalid search result.  
+The second is the admin view with a login system. The admin can add, update or delete records as he sees fit. I'll be adding more features to the project and is a work in progress.
 
 How to run the project:
 
@@ -17,5 +18,20 @@ Note: after you've cloned the project, the npm install command should siffice in
 
 4) As soon as the file has been created, copy paste the following command into your .env file:          MONGODB_URI=mongodb+srv://root:admin@cluster01.j30rt5u.mongodb.net/faculty_management
 
+Important Note: Make sure that the .env file is inside of the final-project-test folder in your file explorer on the left hand side of the vs code window. If not, drag the .env file to the main project folder. 
+
+
 5) Save the .env file. Go back to your terminal and type: npm start. 
 This should start the project on localhost:9000. Typing localhost:9000 on your browser will open the project. 
+
+![final user view-1 for submission](https://user-images.githubusercontent.com/76087316/236707688-76ccf0cd-236c-4f86-ba86-5623cbbb29b4.jpg)
+
+![final user view-2 for submission](https://user-images.githubusercontent.com/76087316/236707703-8d76197e-f74b-487d-b34b-670d67f8ddd3.jpg)
+
+![final user view-3 for submission](https://user-images.githubusercontent.com/76087316/236707713-f8188cf4-ee4f-4c97-bf42-1ca37ace6651.jpg)
+
+![admin view-1 for final submission](https://user-images.githubusercontent.com/76087316/236707719-be8e45ee-615a-4055-ad44-0ec3dcc916dc.jpg)
+
+
+
+
