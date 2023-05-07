@@ -24,6 +24,11 @@ Important Note: Make sure that the .env file is inside of the final-project-test
 5) Save the .env file. Go back to your terminal and type: npm start. 
 This should start the project on localhost:9000. Typing localhost:9000 on your browser will open the project. 
 
+
+
+
+Note: In the below screenshots, I did not include admin view dashboard for privacy reasons. 
+
 ![final user view-1 for submission](https://user-images.githubusercontent.com/76087316/236707688-76ccf0cd-236c-4f86-ba86-5623cbbb29b4.jpg)
 
 ![final user view-2 for submission](https://user-images.githubusercontent.com/76087316/236707703-8d76197e-f74b-487d-b34b-670d67f8ddd3.jpg)
