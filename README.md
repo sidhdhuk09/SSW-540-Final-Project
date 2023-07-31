@@ -33,7 +33,7 @@ Note: In the below screenshots, I did not include admin view dashboard for priva
 
 ![final user view-2 for submission](https://user-images.githubusercontent.com/76087316/236707703-8d76197e-f74b-487d-b34b-670d67f8ddd3.jpg)
 
-![final user view-3 for submission](https://user-images.githubusercontent.com/76087316/236707713-f8188cf4-ee4f-4c97-bf42-1ca37ace6651.jpg)
+
 
 ![admin view-1 for final submission](https://user-images.githubusercontent.com/76087316/236707719-be8e45ee-615a-4055-ad44-0ec3dcc916dc.jpg)
 
